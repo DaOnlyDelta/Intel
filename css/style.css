@@ -1,9 +1,124 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-body, html {
-    height: 100%;
-    width: 100%;
+body,
+html {
+  height: 100%;
+  width: 100%;
+  font-family: "Intel One Mono", monospace;
+}
+
+#upper {
+  background-color: #000f28;
+  width: 100%;
+  height: 500vh;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  position: relative;
+  justify-content: flex-start;
+  padding: 28px 48px;
+  height: 44px;
+  color: #fff;
+  background: #000f28;
+  z-index: 10;
+}
+
+#navLogo {
+  padding: 10px 12px;
+  margin-right: 32px;
+  filter: brightness(1);
+}
+
+/* Apply sizing and hover to the image itself */
+#navLogo img {
+  height: 20px;
+  width: auto;
+}
+
+#navLogo:hover {
+  filter: brightness(0.8);
+  /* slightly gray on hover */
+}
+
+nav ul {
+  display: flex;
+  /* horizontal list */
+  list-style: none;
+  /* remove bullets */
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: flex;
+  justify-content: center;
+  height: 44px;
+  align-items: center;
+  background: none;
+  padding: 11.5px 12px;
+  text-decoration: none;
+}
+
+#navLeft li span {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  text-align: center;
+  line-height: 44px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  /* move the line further down */
+  height: 1px;
+  /* thickness of the line */
+  background: #000f28;
+}
+
+#navLeft li span:hover {
+  color: #0071c5;
+  cursor: pointer;
+}
+
+#navRight {
+  display: flex;
+  align-items: center;
+  height: 67px;
+  margin-left: auto;
+}
+
+#navRight #signIn img {
+  height: 30px;
+  width: auto;
+}
+
+#navRight svg {
+  color: #fff;
+  height: 24px;
+  width: 24px;
+}
+
+#navRight svg:hover {
+  color: #0071c5;
+  cursor: pointer;
+}
+
+
+
+#logoCanvas {
+  width: 100px;   /* display size */
+  height: 100px;
+  cursor: pointer;
 }
