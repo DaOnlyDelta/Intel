@@ -1,3 +1,25 @@
+@font-face {
+    font-family: "Intel One Mono";
+    src: url("../fonts/IntelOneMono-Light.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Intel One Mono";
+    src: url("../fonts/IntelOneMono-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Intel One Mono";
+    src: url("../fonts/IntelOneMono-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+
 * {
   margin: 0;
   padding: 0;
@@ -7,6 +29,9 @@ body,
 html {
   height: 100%;
   width: 100%;
+}
+
+body {
   font-family: "Intel One Mono", monospace;
 }
 
@@ -47,9 +72,7 @@ nav {
 
 nav ul {
   display: flex;
-  /* horizontal list */
   list-style: none;
-  /* remove bullets */
   margin: 0;
   padding: 0;
 }
@@ -64,7 +87,7 @@ nav li {
   text-decoration: none;
 }
 
-#navLeft li span {
+nav #navLeft span {
   position: relative;
   display: inline-block;
   height: 100%;
@@ -72,10 +95,11 @@ nav li {
   line-height: 44px;
   color: #fff;
   font-size: 14px;
-  font-weight: 600;
+  font-family: 'Intel One Mono';
+  font-weight: 500;
 }
 
-span::after {
+nav #navLeft span::after {
   content: "";
   position: absolute;
   left: 0;
@@ -87,9 +111,19 @@ span::after {
   background: #000f28;
 }
 
-#navLeft li span:hover {
+nav span:hover {
   color: #0071c5;
   cursor: pointer;
+}
+
+nav #navRight span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  height: 44px;
+  line-height: normal; /* reset this */
 }
 
 #navRight {
@@ -104,21 +138,14 @@ span::after {
   width: auto;
 }
 
-#navRight svg {
-  color: #fff;
-  height: 24px;
-  width: 24px;
+#navRight #langDiv {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: white;   /* initial color */
+    cursor: pointer;
 }
-
-#navRight svg:hover {
-  color: #0071c5;
-  cursor: pointer;
-}
-
-
 
 #logoCanvas {
-  width: 100px;   /* display size */
-  height: 100px;
   cursor: pointer;
 }

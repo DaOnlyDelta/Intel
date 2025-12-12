@@ -1,99 +1,110 @@
-// ===== Canvas Setup =====
+const canvas = document.getElementById('logoCanvas');
+const ctx = canvas.getContext('2d');
 
-// Get the <canvas> element from the DOM
-const canvas = document.getElementById("logoCanvas");
-
-// Get the 2D drawing context
-const ctx = canvas.getContext("2d");
-
-// Set the CSS display size of the canvas
-const CSS_W = 100;
-const CSS_H = 100;
-
-// Get the device pixel ratio (for Retina/HiDPI displays)
-const DPR = window.devicePixelRatio || 1;
-
-// Set the actual pixel buffer size of the canvas
-canvas.width = CSS_W * DPR;
-canvas.height = CSS_H * DPR;
-
-// Scale the drawing context so 1 CSS pixel = 1 device pixel
-ctx.scale(DPR, DPR);
-
-
-// ===== Load Your SVG File =====
-
-// Load an SVG file from a given path and return its text contents
-async function loadSVG(path) {
-    const res = await fetch(path);     // Fetch the SVG file over HTTP
-    return await res.text();           // Convert the response to raw SVG text
-}
-
-
-// recolor the SVG (changes ALL fills from blue to your color)
-// Uses regex to replace #0068B5 anywhere in the SVG string
-function recolor(svg, color) {
-    return svg.replace(/#0068B5/gi, color);
-}
-
-
-// ===== Draw SVG as an Image on Canvas =====
-
-// Converts the SVG string → Blob → ObjectURL → HTMLImageElement,
-// waits until it loads, then draws it onto the canvas
-async function drawSVG(svgString) {
-
-    // Convert SVG text into a binary Blob that the browser can treat like a file
-    const blob = new Blob([svgString], { type: "image/svg+xml" });
-
-    // Create a temporary URL pointing to that Blob
-    const url = URL.createObjectURL(blob);
-
-    // Create an <img> element that will load the SVG
-    const img = new Image();
-
-    // Wait until browser finishes loading the SVG image
-    await new Promise((resolve) => {
-        img.onload = resolve;
-        img.src = url;
-    });
-
-    // Clear whatever was previously drawn on the canvas
-    ctx.clearRect(0, 0, CSS_W, CSS_H);
-
-    // Calculate a uniform scale so the SVG fits inside the CSS canvas size
-    const scale = Math.min(CSS_W / img.width, CSS_H / img.height);
-
-    // Compute the scaled width and height
-    const w = img.width * scale;
-    const h = img.height * scale;
-
-    // Draw the image centered in the canvas
-    ctx.drawImage(
-        img,
-        (CSS_W - w) / 2,     // center offset X
-        (CSS_H - h) / 2,     // center offset Y
-        w,
-        h
-    );
-
-    // Release the temporary URL to avoid memory leaks
-    URL.revokeObjectURL(url);
-}
-
-
-// ===== MAIN LOGIC =====
-
-// Holds the original unmodified SVG text
-let baseSVG;
-
-// Immediately-invoked async function
-(async () => {
-
-    // Load SVG file once at startup
-    baseSVG = await loadSVG("img/Intel-02.svg");
-
-    // Draw the original blue version first
-    await drawSVG(baseSVG);
-
-})();
+ctx.strokeStyle = "rgba(0,0,0,0)";
+ctx.miterLimit = 4;
+ctx.scale(0.1, 0.1);
+ctx.save();
+ctx.fillStyle = "#0068B5";
+ctx.beginPath();
+ctx.moveTo(0, 151.02);
+ctx.lineTo(40.3, 151.02);
+ctx.bezierCurveTo(40.3, 151.02, 40.3, 151.02, 40.3, 151.02);
+ctx.lineTo(40.3, 191.32);
+ctx.bezierCurveTo(40.3, 191.32, 40.3, 191.32, 40.3, 191.32);
+ctx.lineTo(0, 191.32);
+ctx.bezierCurveTo(0, 191.32, 0, 191.32, 0, 191.32);
+ctx.lineTo(0, 151.02);
+ctx.bezierCurveTo(0, 151.02, 0, 151.02, 0, 151.02);
+ctx.closePath();
+ctx.fill();
+ctx.stroke();
+ctx.restore();
+ctx.save();
+ctx.beginPath();
+ctx.moveTo(39.3, 360.98);
+ctx.lineTo(39.3, 215.84);
+ctx.lineTo(1.15, 215.84);
+ctx.lineTo(1.15, 360.98);
+ctx.lineTo(39.3, 360.98);
+ctx.lineTo(39.3, 360.98);
+ctx.closePath();
+ctx.moveTo(292.86, 362.42);
+ctx.lineTo(292.86, 326.85);
+ctx.bezierCurveTo(287.27000000000004, 326.85, 282.53000000000003, 326.56, 279.09000000000003, 325.99);
+ctx.bezierCurveTo(275.07000000000005, 325.42, 272.06000000000006, 323.98, 270.05, 321.97);
+ctx.bezierCurveTo(268.04, 319.96000000000004, 266.75, 317.09000000000003, 266.03000000000003, 313.37);
+ctx.bezierCurveTo(265.46000000000004, 309.78000000000003, 265.17, 305.05, 265.17, 299.32);
+ctx.lineTo(265.17, 248.54999999999998);
+ctx.lineTo(292.85, 248.54999999999998);
+ctx.lineTo(292.85, 215.84999999999997);
+ctx.lineTo(265.17, 215.84999999999997);
+ctx.lineTo(265.17, 159.2);
+ctx.lineTo(226.88000000000002, 159.2);
+ctx.lineTo(226.88000000000002, 299.6);
+ctx.bezierCurveTo(226.88000000000002, 311.5, 227.88000000000002, 321.54, 229.89000000000001, 329.57000000000005);
+ctx.bezierCurveTo(231.9, 337.46000000000004, 235.34, 343.91, 240.07000000000002, 348.7900000000001);
+ctx.bezierCurveTo(244.8, 353.6700000000001, 251.11, 357.11000000000007, 258.71000000000004, 359.2600000000001);
+ctx.bezierCurveTo(266.45000000000005, 361.4100000000001, 276.21000000000004, 362.4100000000001, 287.82000000000005, 362.4100000000001);
+ctx.lineTo(292.86000000000007, 362.4100000000001);
+ctx.lineTo(292.86000000000007, 362.42);
+ctx.closePath();
+ctx.moveTo(512, 360.98);
+ctx.lineTo(512, 148.01);
+ctx.lineTo(473.71, 148.01);
+ctx.lineTo(473.71, 360.98);
+ctx.lineTo(512, 360.98);
+ctx.lineTo(512, 360.98);
+ctx.closePath();
+ctx.moveTo(190.03, 230.04);
+ctx.bezierCurveTo(179.42000000000002, 218.57, 164.5, 212.82999999999998, 145.57, 212.82999999999998);
+ctx.bezierCurveTo(136.39, 212.82999999999998, 128.07, 214.69, 120.47, 218.42);
+ctx.bezierCurveTo(113.01, 222.14999999999998, 106.56, 227.31, 101.53999999999999, 233.91);
+ctx.lineTo(99.38999999999999, 236.64);
+ctx.lineTo(99.38999999999999, 234.2);
+ctx.lineTo(99.38999999999999, 215.83999999999997);
+ctx.lineTo(61.67, 215.83999999999997);
+ctx.lineTo(61.67, 360.97999999999996);
+ctx.lineTo(99.68, 360.97999999999996);
+ctx.lineTo(99.68, 283.67999999999995);
+ctx.lineTo(99.68, 288.98999999999995);
+ctx.bezierCurveTo(99.68, 288.12999999999994, 99.68, 287.2699999999999, 99.68, 286.40999999999997);
+ctx.bezierCurveTo(100.11000000000001, 272.78999999999996, 103.41000000000001, 262.74999999999994, 109.72, 256.28999999999996);
+ctx.bezierCurveTo(116.46, 249.40999999999997, 124.64, 245.95999999999995, 133.96, 245.95999999999995);
+ctx.bezierCurveTo(145, 245.95999999999995, 153.46, 249.39999999999995, 159.06, 255.99999999999994);
+ctx.bezierCurveTo(164.51, 262.59999999999997, 167.38, 271.91999999999996, 167.38, 283.81999999999994);
+ctx.lineTo(167.38, 284.10999999999996);
+ctx.lineTo(167.38, 360.84);
+ctx.lineTo(205.95999999999998, 360.84);
+ctx.lineTo(205.95999999999998, 278.52);
+ctx.bezierCurveTo(206.09, 257.86, 200.64, 241.51, 190.03, 230.04);
+ctx.closePath();
+ctx.moveTo(453.92, 288.13);
+ctx.bezierCurveTo(453.92, 277.65999999999997, 452.06, 267.90999999999997, 448.47, 258.73);
+ctx.bezierCurveTo(444.74, 249.69000000000003, 439.58000000000004, 241.66000000000003, 433.12, 234.78000000000003);
+ctx.bezierCurveTo(426.52, 227.90000000000003, 418.63, 222.59000000000003, 409.46, 218.72000000000003);
+ctx.bezierCurveTo(400.28, 214.85000000000002, 390.09999999999997, 212.98000000000002, 379.06, 212.98000000000002);
+ctx.bezierCurveTo(368.59, 212.98000000000002, 358.7, 214.99, 349.52, 218.86);
+ctx.bezierCurveTo(340.34, 222.88000000000002, 332.31, 228.18, 325.57, 234.92000000000002);
+ctx.bezierCurveTo(318.83, 241.66000000000003, 313.38, 249.69000000000003, 309.51, 258.87);
+ctx.bezierCurveTo(305.49, 268.05, 303.63, 277.94, 303.63, 288.41);
+ctx.bezierCurveTo(303.63, 298.88000000000005, 305.49, 308.77000000000004, 309.21999999999997, 317.95000000000005);
+ctx.bezierCurveTo(312.95, 327.13000000000005, 318.26, 335.16, 324.84999999999997, 341.90000000000003);
+ctx.bezierCurveTo(331.45, 348.64000000000004, 339.61999999999995, 354.09000000000003, 349.09, 357.96000000000004);
+ctx.bezierCurveTo(358.56, 361.98, 369.02, 363.98, 380.21, 363.98);
+ctx.bezierCurveTo(412.62, 363.98, 432.7, 349.21000000000004, 444.75, 335.44);
+ctx.lineTo(417.21, 314.5);
+ctx.bezierCurveTo(411.46999999999997, 321.38, 397.71, 330.71, 380.5, 330.71);
+ctx.bezierCurveTo(369.74, 330.71, 360.85, 328.27, 354.11, 323.25);
+ctx.bezierCurveTo(347.37, 318.37, 342.78000000000003, 311.49, 340.34000000000003, 303.03);
+ctx.lineTo(339.91, 301.73999999999995);
+ctx.lineTo(453.93, 301.73999999999995);
+ctx.lineTo(453.92, 288.13);
+ctx.lineTo(453.92, 288.13);
+ctx.closePath();
+ctx.moveTo(340.19, 274.79);
+ctx.bezierCurveTo(340.19, 264.18, 352.38, 245.68, 378.63, 245.53000000000003);
+ctx.bezierCurveTo(404.87, 245.53000000000003, 417.21, 264.03000000000003, 417.21, 274.64000000000004);
+ctx.lineTo(340.19, 274.79);
+ctx.closePath();
+ctx.fill();
