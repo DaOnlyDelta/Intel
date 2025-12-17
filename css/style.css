@@ -1,22 +1,8 @@
 @font-face {
-    font-family: "Intel One Mono";
-    src: url("../fonts/IntelOneMono-Light.woff2") format("woff2");
-    font-weight: 300;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Intel One Mono";
-    src: url("../fonts/IntelOneMono-Medium.woff2") format("woff2");
-    font-weight: 500;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: "Intel One Mono";
-    src: url("../fonts/IntelOneMono-Bold.woff2") format("woff2");
-    font-weight: 700;
-    font-style: normal;
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-VariableFont_wdth\,wght.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
 }
 
 
@@ -32,74 +18,86 @@ html {
 }
 
 body {
-  font-family: "Intel One Mono", monospace;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+  /* prevent purple on visited */
 }
 
 #upper {
   background-color: #000f28;
   width: 100%;
-  height: 500vh;
+  height: 3125px;
 }
 
-nav {
+#upper nav {
   display: flex;
   align-items: center;
   position: relative;
   justify-content: flex-start;
-  padding: 28px 48px;
+  padding: 28px 25px 28px 48px;
   height: 44px;
   color: #fff;
   background: #000f28;
   z-index: 10;
 }
 
-#navLogo {
+#upper #navLogo {
   padding: 10px 12px;
   margin-right: 32px;
   filter: brightness(1);
 }
 
 /* Apply sizing and hover to the image itself */
-#navLogo img {
+#upper #navLogo img {
   height: 20px;
   width: auto;
 }
 
-#navLogo:hover {
+#upper #navLogo:hover {
   filter: brightness(0.8);
   /* slightly gray on hover */
 }
 
-nav ul {
+#upper nav ul {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-nav li {
+#upper nav li {
   display: flex;
   justify-content: center;
   height: 44px;
+  margin-right: 9px;
   align-items: center;
   background: none;
-  padding: 11.5px 12px;
   text-decoration: none;
 }
 
-nav #navLeft span {
+#upper nav #navLeft span {
   position: relative;
   display: inline-block;
+  padding: 11.5px 12px;
   height: 100%;
   text-align: center;
   line-height: 44px;
   color: #fff;
   font-size: 14px;
-  font-family: 'Intel One Mono';
-  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-nav #navLeft span::after {
+#upper nav #navLeft span::after {
   content: "";
   position: absolute;
   left: 0;
@@ -111,39 +109,130 @@ nav #navLeft span::after {
   background: #000f28;
 }
 
-nav span:hover {
-  color: #0071c5;
-  cursor: pointer;
+#upper nav span:hover {
+  color: #0071c5 !important;
 }
 
-nav #navRight span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  height: 44px;
-  line-height: normal; /* reset this */
-}
-
-#navRight {
+#upper #navRight {
   display: flex;
   align-items: center;
   height: 67px;
   margin-left: auto;
 }
 
-#navRight #signIn img {
-  height: 30px;
-  width: auto;
+#upper nav #navRight span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11.5px 0 11.5px 12px;
+  height: 44px;
+  font-size: 14px;
+  line-height: normal;
+  /* reset this */
+  cursor: pointer;
 }
 
-#navRight #langDiv {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: white;   /* initial color */
-    cursor: pointer;
+#upper nav #navRight #lang {
+  padding-left: 20px;
+}
+
+#upper nav #navRight #langText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 6px;
+}
+
+#upper nav #navRight #searchText {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 11px;
+  cursor: text;
+}
+
+
+
+#upper #scroll {
+  position: relative;
+}
+
+#upper #scroll #imgContainer {
+  position: absolute;
+  top: 178px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  box-shadow: #fff 0 0 20px 5px;
+  overflow: hidden;
+}
+
+#upper #scroll #imgContainer.fixed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#upper #scroll .slide {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition:
+    top 0.6s cubic-bezier(0.1, 0.8, 1, 1),
+    opacity 0.2s ease;
+}
+
+#upper #scroll .slide.active {
+  top: 0;
+  opacity: 1;
+}
+
+#upper #scroll #slide1 {
+  top: 0;
+  opacity: 1;
+}
+
+#upper #scroll #imgContainer .centerImage {
+  height: 100%;
+  width: 100%;
+}
+
+#upper #scroll #imgContainer .centerImgText {
+  position: absolute;
+  bottom: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  width: 80%;
+}
+
+#upper #scroll #imgContainer .centerImgText h1 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+#upper #scroll #imgContainer .centerImgText h2 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 0 auto 28px;
+  width: 55%;
+}
+
+#upper #scroll #imgContainer .centerImgText a {
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #0046c8;
+  padding: 14px 18px;
+  border-radius: 20px;
 }
 
 #logoCanvas {
