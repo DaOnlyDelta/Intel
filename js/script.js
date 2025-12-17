@@ -6,7 +6,8 @@ const slides = [slide1, slide2, slide3];
 const image = document.getElementById('centerImage');
 const startPoint = 50; // scrollY when it snaps to center
 const endPoint = 2200; // scrollY when it snaps out of center
-const switchPoints = [400, 1000, 1600]; // scrollY thresholds to change image
+const switchPoints = [200, 900, 1600]; // scrollY thresholds to change image
+let currentSlide = 0;
 
 window.addEventListener('scroll', () => {
     const scroll = window.scrollY;
@@ -26,21 +27,41 @@ window.addEventListener('scroll', () => {
         container.style.transform = 'translateX(-50%)';
     }
 
-    slides.forEach(s => s.classList.remove('active'));
+    let newSlide = currentSlide; // Track the new slide index
 
     // Switch between images based on scroll
     if (scroll < switchPoints[1]) {
-        slides[0].classList.add('active');
+        newSlide = 0;
+        slides[0].style.opacity = '1';
         slides[0].style.top = '0';
-        slides[1].style.top = '-100%';
+        slides[1].style.top = '-10%';
+        slides[1].style.opacity = '0';
     } else if (scroll < switchPoints[2]) {
-        slides[1].classList.add('active');
-        slides[0].style.top = '100%';
+        newSlide = 1;
+        slides[0].style.top = '10%';
+        slides[0].style.opacity = '0';
         slides[1].style.top = '0';
-        slides[2].style.top = '-100%';
+        slides[1].style.opacity = '1';
+        slides[2].style.opacity = '0';
+        slides[2].style.top = '-10%';
     } else {
-        slides[2].classList.add('active');
-        slides[1].style.top = '100%';
+        newSlide = 2;
+        slides[1].style.top = '10%';
+        slides[1].style.opacity = '0';
         slides[2].style.top = '0';
+        slides[2].style.opacity = '1';
+    }
+
+    // Only call fadeGlow if the slide has changed
+    if (newSlide !== currentSlide) {
+        fadeGlow();
+        currentSlide = newSlide; // Update currentSlide
     }
 });
+
+function fadeGlow() {
+    container.classList.add('fade');
+    setTimeout(() => {
+        container.classList.remove('fade');
+    }, 200);
+}
