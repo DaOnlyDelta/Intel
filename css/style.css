@@ -34,7 +34,7 @@ a:visited {
 #upper {
   background-color: #000f28;
   width: 100%;
-  height: 3125px;
+  height: 3225px;
 }
 
 #upper nav {
@@ -164,24 +164,54 @@ a:visited {
   transform: translateX(-50%);
   width: 600px;
   height: 600px;
-  box-shadow:
-    0 0 100px 30px rgba(125, 63, 240, 0.6),
-    0 0 15px 5px rgba(125, 63, 240, 0.7);
-  overflow: hidden;
-  transition: box-shadow 0.2s ease;
-}
+  z-index: 9;
+  isolation: isolate;
+  /* keep the glow behind the content */
 
-#upper #scroll #imgContainer.fade {
-    box-shadow:
-      0 0 100px 30px #000f28,
-      0 0 15px 5px #000f28;
-}
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -8%;
+    background:
+      radial-gradient(135% 120% at 80% 20%, rgba(90, 20, 180, 0.75), rgba(0, 0, 0, 0) 70%),
+      radial-gradient(135% 120% at 80% 80%, rgba(0, 110, 200, 0.72), rgba(0, 0, 0, 0) 73%),
+      radial-gradient(135% 120% at 20% 20%, rgba(10, 120, 210, 0.68), rgba(0, 0, 0, 0) 70%),
+      radial-gradient(135% 120% at 20% 80%, rgba(0, 170, 150, 0.78), rgba(0, 0, 0, 0) 73%);
+    filter: blur(35px);
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
 
-#upper #scroll #imgContainer.fixed {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  &.fade::before {
+    opacity: 0;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -1%;
+    background:
+      radial-gradient(135% 120% at 80% 20%, rgba(90, 20, 180, 0.85) 0 45%, rgba(0, 0, 0, 0) 72%),
+      radial-gradient(135% 120% at 80% 80%, rgba(0, 110, 200, 0.80) 0 48%, rgba(0, 0, 0, 0) 75%),
+      radial-gradient(135% 120% at 20% 20%, rgba(10, 120, 210, 0.78) 0 45%, rgba(0, 0, 0, 0) 72%),
+      radial-gradient(135% 120% at 20% 80%, rgba(0, 170, 150, 0.85) 0 48%, rgba(0, 0, 0, 0) 75%);
+    filter: blur(15px);
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  &.fade::after {
+    opacity: 0;
+  }
+
+  &.fixed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 
 #upper #scroll .slide {
@@ -191,14 +221,17 @@ a:visited {
   width: 100%;
   height: 100%;
   opacity: 0;
+  z-index: 100;
+  pointer-events: none;
   transition:
     top 1s ease,
-    opacity 0.4s ease;
+    opacity 0.8s ease;
 }
 
 #upper #scroll #slide1 {
   top: 0;
   opacity: 1;
+  pointer-events: auto;
 }
 
 #upper #scroll #imgContainer .centerImage {
@@ -237,13 +270,44 @@ a:visited {
   background-color: #0046c8;
   padding: 14px 18px;
   border-radius: 24px;
+
+  &:hover {
+    background-color: #3d7dd9;
+  }
 }
 
-#upper #scroll #bottomText {
+#upper #bt {
   position: absolute;
-  bottom: 30px;
-  color: blue;
-  text-align: center;;
+  top: 88%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  z-index: 1;
+}
+
+#upper #bt.fixed {
+  position: fixed;
+  top: 77%;
+}
+
+#upper #bt h3 {
+  position: absolute;
+  top: 0;
+  display: inline-block;
+  color: rgba(0, 110, 200, 0.25);
+  font-size: 200px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  opacity: 0;
+  user-select: none;
+  transition:
+    top 1s ease,
+    opacity 0.8s ease;
+}
+
+#upper #bt #bt1 {
+  opacity: 1;
 }
 
 
