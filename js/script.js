@@ -2,6 +2,7 @@ const container = document.getElementById('imgContainer');
 const slide1 = document.getElementById('slide1');
 const slide2 = document.getElementById('slide2');
 const slide3 = document.getElementById('slide3');
+const slides = [slide1, slide2, slide3];
 const image = document.getElementById('centerImage');
 const startPoint = 50; // scrollY when it snaps to center
 const endPoint = 2300; // scrollY when it snaps out of center
@@ -39,15 +40,19 @@ window.addEventListener('scroll', () => {
     // Switch between images based on scroll
     if (scroll < switchPoints[1]) {
         newSlide = 1;
+        slide1.style.pointerEvents = 'auto';
         slide1.style.opacity = '1';
         slide1.style.top = '0';
         slide2.style.top = '-5%';
         slide2.style.opacity = '0';
 
         bt1.style.opacity = '1';
+        bt1.style.top = '0';
         bt2.style.opacity = '0';
+        bt2.style.top = '50%';
     } else if (scroll < switchPoints[2]) {
         newSlide = 2;
+        slide2.style.pointerEvents = 'auto';
         slide1.style.top = '5%';
         slide1.style.opacity = '0';
         slide2.style.top = '0';
@@ -56,18 +61,30 @@ window.addEventListener('scroll', () => {
         slide3.style.top = '-5%';
 
         bt1.style.opacity = '0';
+        bt1.style.top = '-200%';
         bt2.style.opacity = '1';
+        bt2.style.top = '0';
         bt3.style.opacity = '0';
+        bt3.style.top = '50%';
+
     } else {
         newSlide = 3;
+        slide3.style.pointerEvents = 'auto';
         slide2.style.top = '5%';
         slide2.style.opacity = '0';
         slide3.style.top = '0';
         slide3.style.opacity = '1';
 
         bt2.style.opacity = '0';
+        bt2.style.top = '-200%';
         bt3.style.opacity = '1';
+        bt3.style.top = '0';
     }
+
+    slides.forEach(element => {
+        element.style.pointerEvents = 'none';
+    });
+    slides[newSlide - 1].style.pointerEvents = 'auto';
 
     // Only call fadeGlow if the slide has changed
     if (newSlide !== currentSlide) {
