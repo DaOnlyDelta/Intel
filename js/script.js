@@ -5,14 +5,15 @@ const slide3 = document.getElementById('slide3');
 const slides = [slide1, slide2, slide3];
 const image = document.getElementById('centerImage');
 const startPoint = 50; // scrollY when it snaps to center
-const endPoint = 2278; // scrollY when it snaps out of center
-const switchPoints = [200, 900, 1600, endPoint + window.innerHeight - 100]; // scrollY thresholds to change image
+const endPoint = 3950 - window.innerHeight; // scrollY when it snaps out of center
+const switchPoints = [200, 1200, 2200, endPoint + window.innerHeight]; // scrollY thresholds to change image
 let currentSlide = 1;
 
 const btContainer = document.getElementById('bt');
 const bt1 = document.getElementById('bt1');
 const bt2 = document.getElementById('bt2');
 const bt3 = document.getElementById('bt3');
+const bts = [bt1, bt2, bt3];
 
 const dotsContainer = document.getElementById('dots');
 const dot1 = document.getElementById('dot1');
@@ -20,8 +21,6 @@ const dot2 = document.getElementById('dot2');
 const dot3 = document.getElementById('dot3');
 const dots = [dot1, dot2, dot3];
 const arrow = document.getElementById('arrow');
-
-const nav = document.querySelector('nav');
 
 window.addEventListener('scroll', () => {
     const scroll = window.scrollY;
@@ -34,7 +33,6 @@ window.addEventListener('scroll', () => {
         btContainer.style.top = '';
         dotsContainer.classList.add('fixed');
         dotsContainer.style.top = '';
-        nav.classList.remove('fixed');
     } else if (scroll < startPoint) {
         container.classList.remove('fixed');
         container.style.top = '';
@@ -42,15 +40,13 @@ window.addEventListener('scroll', () => {
         btContainer.style.top = '';
         dotsContainer.classList.remove('fixed');
         dotsContainer.style.top = '';
-        nav.classList.remove('fixed');
     } else if (scroll > endPoint) {
         container.classList.remove('fixed');
-        container.style.top = `${endPoint - 115}px`;
+        container.style.top = `${endPoint}px`;
         btContainer.classList.remove('fixed');
-        btContainer.style.top = `${endPoint + 540}px`;
+        btContainer.style.top = `${endPoint + 685}px`;
         dotsContainer.classList.remove('fixed');
         dotsContainer.style.top = `${endPoint + 340}px`;
-        nav.classList.add('fixed');
     }
 
     let newSlide = currentSlide; // Track the new slide index
@@ -58,48 +54,84 @@ window.addEventListener('scroll', () => {
     // Switch between images based on scroll
     if (scroll < switchPoints[1]) {
         newSlide = 1;
-        slide1.style.pointerEvents = 'auto';
-        slide1.style.opacity = '1';
-        slide1.style.top = '0';
-        slide2.style.top = '-5%';
-        slide2.style.opacity = '0';
-
-        bt1.style.opacity = '1';
-        bt1.style.top = '0';
-        bt2.style.opacity = '0';
-        bt2.style.top = '50%';
     } else if (scroll < switchPoints[2]) {
         newSlide = 2;
-        slide2.style.pointerEvents = 'auto';
-        slide1.style.top = '5%';
-        slide1.style.opacity = '0';
-        slide2.style.top = '0';
-        slide2.style.opacity = '1';
-        slide3.style.opacity = '0';
-        slide3.style.top = '-5%';
-
-        bt1.style.opacity = '0';
-        bt1.style.top = '-200%';
-        bt2.style.opacity = '1';
-        bt2.style.top = '0';
-        bt3.style.opacity = '0';
-        bt3.style.top = '50%';
-
     } else {
         newSlide = 3;
-        slide3.style.pointerEvents = 'auto';
-        slide2.style.top = '5%';
-        slide2.style.opacity = '0';
-        slide3.style.top = '0';
-        slide3.style.opacity = '1';
-
-        bt2.style.opacity = '0';
-        bt2.style.top = '-200%';
-        bt3.style.opacity = '1';
-        bt3.style.top = '0';
     }
 
     if (newSlide !== currentSlide) {
+
+        // Helper to reset button to bottom for incoming animation
+        const prepareEnter = (el) => {
+            el.style.transition = 'none';
+            el.style.top = '50%';
+            el.style.opacity = '0';
+            void el.offsetWidth; // Trigger reflow
+            el.style.transition = '';
+        };
+
+        if (newSlide === 1) {
+            slide1.style.pointerEvents = 'auto';
+            slide2.style.top = '-5%';
+            slide2.style.opacity = '0';
+            slide1.style.opacity = '1';
+            slide1.style.top = '0';
+
+            // Buttons
+            bt2.style.top = '-200%';
+            bt2.style.opacity = '0';
+
+            prepareEnter(bt1);
+            setTimeout(() => {
+                if (currentSlide !== 1) return; // Prevent animation if slide changed again
+                bt1.style.top = '0';
+                bt1.style.opacity = '1';
+            }, 1000);
+
+        } else if (newSlide === 2) {
+            slide2.style.pointerEvents = 'auto';
+            slide1.style.top = '5%';
+            slide1.style.opacity = '0';
+            slide2.style.top = '0';
+            slide2.style.opacity = '1';
+            slide3.style.opacity = '0';
+            slide3.style.top = '-5%';
+
+            // Buttons
+            bt1.style.top = '-200%';
+            bt1.style.opacity = '0';
+            bt3.style.top = '-200%';
+            bt3.style.opacity = '0';
+
+            prepareEnter(bt2);
+            setTimeout(() => {
+                if (currentSlide !== 2) return; // Prevent animation if slide changed again
+                bt2.style.top = '0';
+                bt2.style.opacity = '1';
+            }, 1000);
+
+        } else if (newSlide === 3) {
+            slide3.style.pointerEvents = 'auto';
+            slide2.style.top = '5%';
+            slide2.style.opacity = '0';
+            slide3.style.top = '0';
+            slide3.style.opacity = '1';
+
+            // Buttons
+            bt1.style.top = '-200%';
+            bt1.style.opacity = '0';
+            bt2.style.top = '-200%';
+            bt2.style.opacity = '0';
+
+            prepareEnter(bt3);
+            setTimeout(() => {
+                if (currentSlide !== 3) return; // Prevent animation if slide changed again
+                bt3.style.top = '0';
+                bt3.style.opacity = '1';
+            }, 1000);
+        }
+
         fadeGlow();
 
         slides.forEach(element => {

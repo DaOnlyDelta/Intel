@@ -34,7 +34,7 @@ a:visited {
 #upper {
   background-color: #000f28;
   width: 100%;
-  height: 3225px;
+  height: 3950px;
 }
 
 #upper nav {
@@ -48,11 +48,6 @@ a:visited {
   color: #fff;
   background: #000f28;
   z-index: 10;
-
-  &.fixed {
-    position: fixed;
-    top: 0;
-  }
 }
 
 #upper #navLogo {
@@ -183,7 +178,7 @@ a:visited {
       radial-gradient(135% 120% at 80% 20%, rgba(90, 20, 180, 0.75), rgba(0, 0, 0, 0) 70%),
       radial-gradient(135% 120% at 80% 80%, rgba(40, 140, 210, 0.72), rgba(0, 0, 0, 0) 73%),
       radial-gradient(135% 120% at 20% 20%, rgba(50, 150, 220, 0.68), rgba(0, 0, 0, 0) 70%),
-      radial-gradient(135% 120% at 20% 80%, rgba(0, 170, 150, 0.78), rgba(0, 0, 0, 0) 73%);
+      radial-gradient(135% 120% at 20% 80%, rgba(100, 120, 180, 0.78), rgba(0, 0, 0, 0) 73%);
     filter: blur(40px);
     z-index: 0;
     pointer-events: none;
@@ -202,7 +197,7 @@ a:visited {
       radial-gradient(135% 120% at 80% 20%, rgba(90, 20, 180, 0.85) 0 45%, rgba(0, 0, 0, 0) 72%),
       radial-gradient(135% 120% at 80% 80%, rgba(40, 140, 210, 0.80) 0 48%, rgba(0, 0, 0, 0) 75%),
       radial-gradient(135% 120% at 20% 20%, rgba(50, 150, 220, 0.78) 0 45%, rgba(0, 0, 0, 0) 72%),
-      radial-gradient(135% 120% at 20% 80%, rgba(0, 170, 150, 0.85) 0 48%, rgba(0, 0, 0, 0) 75%);
+      radial-gradient(135% 120% at 20% 80%, rgba(100, 120, 180, 0.85) 0 48%, rgba(0, 0, 0, 0) 75%);
     filter: blur(10px);
     z-index: 0;
     pointer-events: none;
@@ -323,7 +318,7 @@ a:visited {
 
 #upper #bt {
   position: absolute;
-  top: 88%;
+  top: 91%;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -332,7 +327,7 @@ a:visited {
 
   &.fixed {
     position: fixed;
-    top: 77%;
+    top: 80%;
   }
 }
 
@@ -341,7 +336,8 @@ a:visited {
   top: -50%;
   display: inline-block;
   color: rgba(0, 110, 200, 0.25);
-  font-size: 200px;
+  font-size: 230px;
+  letter-spacing: -10px;
   width: 100%;
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -349,7 +345,7 @@ a:visited {
   user-select: none;
   transition:
     top 1s ease,
-    opacity 0.4s ease;
+    opacity 1s ease;
 }
 
 #upper #bt #bt1 {
@@ -359,12 +355,12 @@ a:visited {
 
 #lower {
   height: 1000px;
-  padding: 110px 95px;
+  padding: 120px 95px;
 }
 
 #lower a {
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 600;
   color: #000;
   padding: 5px 2px;
 
@@ -377,55 +373,66 @@ a:visited {
   padding: 110px 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  gap: 20px;
   border-bottom: rgba(50, 150, 220, 0.3) 1px solid;
 }
 
 #lower1 div {
   position: relative;
   height: 400px;
-  width: 410px;
   border-right: rgba(50, 150, 220, 0.3) 1px solid;
 }
 
 #lower1 div a {
   display: inline-block;
   height: 100%;
-  width: 100%;
+  width: 18vw;
+  padding-right: 3vw;
   cursor: pointer;
 
   font-family: 'Roboto', sans-serif;
 }
 
 #lower1 div a h1 {
-  font-size: 25px;
-  line-height: 30px;
-  margin-bottom: 20px;
+  font-size: 30px;
+  line-height: 32px;
+  margin-bottom: 25px;
 }
 
 #lower1 div a h2 {
-  color: #777;
+  color: #bebebe;
   font-size: 14px;
   margin-bottom: 12px;
 }
 
 #lower1 div a h3 {
-  color: #777;
-  font-size: 14px;
+  color: #afafaf;
+  font-size: 15px;
   margin-bottom: 12px;
-  font-weight: 400;
-  line-height: 25px;
+  font-weight: 500;
+  line-height: 18px;
 }
 
 #lower1 div a h4 {
   position: absolute;
   bottom: 0;
-  color: #3269b6;
-  font-size: 12px;
+  color: #84b5ff;
+  font-size: 14px;
 }
 
 #lower1 #gaming {
   border-right: none;
+}
+
+#lower2 {
+  padding: 110px 0;
+}
+
+#lower2 h1 {
+  width: 70%;
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 25px;
 }
 
 #logoCanvas {
