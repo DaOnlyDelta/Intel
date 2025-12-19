@@ -42,11 +42,17 @@ a:visited {
   align-items: center;
   position: relative;
   justify-content: flex-start;
-  padding: 28px 25px 28px 48px;
+  padding: 28px 2% 28px 3%;
+  width: 95%;
   height: 44px;
   color: #fff;
   background: #000f28;
   z-index: 10;
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+  }
 }
 
 #upper #navLogo {
@@ -155,6 +161,7 @@ a:visited {
 
 #upper #scroll {
   position: relative;
+  height: 100%;
 }
 
 #upper #scroll #imgContainer {
@@ -276,6 +283,44 @@ a:visited {
   }
 }
 
+#upper #dots {
+  position: absolute;
+  top: 65%;
+  left: 6%;
+  transform: translateY(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  &.fixed {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+#upper #dots svg circle.dot,
+#upper #dots svg polygon.dot {
+  stroke: rgba(255, 255, 255, 0.4);
+  fill: rgba(255, 255, 255, 0.4);
+  z-index: 10;
+  cursor: pointer;
+  transition:
+    stroke 0.3s ease,
+    fill 0.3s ease;
+
+  &:hover {
+    stroke: #fff;
+    fill: #fff;
+  }
+
+  &.active {
+    stroke: #fff;
+    fill: #fff;
+  }
+}
+
 #upper #bt {
   position: absolute;
   top: 88%;
@@ -293,6 +338,7 @@ a:visited {
 
 #upper #bt h3 {
   position: absolute;
+  top: -50%;
   display: inline-block;
   color: rgba(0, 110, 200, 0.25);
   font-size: 200px;
@@ -311,15 +357,9 @@ a:visited {
   top: 0;
 }
 
-#upper #bt #bt2 {
-  top: -50%;
+#lower {
+  height: 1000px;
 }
-
-#upper #bt #bt3 {
-  top: -50%;
-}
-
-
 
 #logoCanvas {
   cursor: pointer;
