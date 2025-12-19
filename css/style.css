@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Roboto";
-  src: url("../fonts/Roboto-VariableFont_wdth\,wght.ttf") format("ttf");
+  src: url("../fonts/Roboto-VariableFont.ttf") format("ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -359,8 +359,77 @@ a:visited {
 
 #lower {
   height: 1000px;
+  padding: 110px 95px;
+}
+
+#lower a {
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  padding: 5px 2px;
+
+  &:hover {
+    color: #3d7dd9;
+  }
+}
+
+#lower1 {
+  padding: 110px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  border-bottom: rgba(50, 150, 220, 0.3) 1px solid;
+}
+
+#lower1 div {
+  position: relative;
+  height: 400px;
+  width: 410px;
+  border-right: rgba(50, 150, 220, 0.3) 1px solid;
+}
+
+#lower1 div a {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+#lower1 div a h1 {
+  font-size: 25px;
+  line-height: 30px;
+  margin-bottom: 20px;
+}
+
+#lower1 div a h2 {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+#lower1 div a h3 {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 12px;
+  font-weight: 400;
+  line-height: 25px;
+}
+
+#lower1 div a h4 {
+  position: absolute;
+  bottom: 0;
+  color: #3269b6;
+  font-size: 12px;
+}
+
+#lower1 #gaming {
+  border-right: none;
 }
 
 #logoCanvas {
   cursor: pointer;
+  position: absolute;
+  bottom: 0;
 }
