@@ -470,10 +470,49 @@ a:visited {
   cursor: pointer;
   font-family: 'Roboto', sans-serif;
   background-color: rgba(45, 118, 255, 0.1);
+  color: rgba(45, 118, 255, 1.0);
+  fill: rgba(45, 118, 255, 1.0);
+  stroke: rgba(45, 118, 255, 1.0);
 
   &:hover {
     background-color: rgba(45, 118, 255, 1.0);
+    color: #fff;
+    fill: #fff;
   }
+}
+
+#lower3 div a span {
+  display: inline-block;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  height: 45px;
+  width: auto;
+}
+
+#lower3 div a span svg {
+  height: 100%;
+  width: auto;
+  stroke: inherit;
+  fill: inherit;
+}
+
+#lower3 div a span svg .statusGreen {
+  fill: #22C55E;
+  stroke: #22C55E;
+}
+
+#lower3 div a:hover span svg .statusGreen {
+  fill: #22C55E;
+  stroke: #22C55E;
+}
+
+#lower3 div a h5 {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  font-size: 18px;
+  letter-spacing: 1px;
 }
 
 footer {
