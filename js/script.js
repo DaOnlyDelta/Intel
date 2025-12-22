@@ -170,3 +170,26 @@ function fadeGlow() {
         container.classList.remove('fade');
     }, 250);
 }
+
+
+const products = document.getElementById('products');
+const support = document.getElementById('support');
+const solutions = document.getElementById('solutions');
+const developers = document.getElementById('developers');
+const partners = document.getElementById('partners');
+const foundry = document.getElementById('foundry');
+const rect = document.getElementById('animRect');
+const productsLabel = products.querySelector('span');
+
+window.addEventListener('click', () => {
+    rect.classList.remove('active');
+    rect.style.top = '-900px';
+    productsLabel.classList.remove('active');
+});
+
+products.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent the window click from immediately removing the class
+    rect.classList.add('active');
+    rect.style.top = '-400px';
+    productsLabel.classList.add('active');
+});
