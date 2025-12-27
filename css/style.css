@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Roboto";
-  src: url("../fonts/Roboto-VariableFont.ttf") format("ttf");
+  src: url("../fonts/Roboto-VariableFont.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -19,6 +19,16 @@ html {
 
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: #000f28;
+}
+
+#total {
+  height: 100%;
+  width: 100%;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 a {
@@ -35,6 +45,8 @@ a:visited {
   background-color: #000f28;
   width: 100%;
   height: 3950px;
+  position: relative;
+  isolation: isolate;
 }
 
 #upper nav {
@@ -47,13 +59,14 @@ a:visited {
   height: 44px;
   color: #fff;
   background: #000f28;
-  z-index: 100;
+  z-index: 7;
 }
 
 #upper #navLogo {
   padding: 10px 12px;
   margin-right: 32px;
   filter: brightness(1);
+  z-index: 8;
 }
 
 /* Apply sizing and hover to the image itself */
@@ -69,40 +82,30 @@ a:visited {
 
 #upper #animRect {
   position: absolute;
-  top: -900px;
-  left: -50%;
+  top: -1000px;
+  left: 0;
   background-color: #000f28;
-  width: 200%;
+  width: 100%;
   height: 1000px;
-  z-index: -1;
-  transition: top 0.5s ease, top 0s ease;
+  z-index: 6;
+  transition: top 0.3s ease;
 }
 
-#upper #animRect.active::after {
-  content: '';
-  display: block;
+#upper #animRectShadow {
   position: absolute;
-  top: 0;
-  left: -50%;
+  top: 200px;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  width: 200%;
-  height: 2000px;
-  z-index: 20;
-}
-
-#upper #animRect2 {
-  position: absolute;
-  top: -900px;
-  left: -50%;
-  background-color: rgba(0, 0, 0, 0);
-  width: 200%;
+  width: 100%;
   height: 1000px;
-  z-index: -1;
-  transition: background-color 0.3s ease;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-#upper #animRect2.active {
-  background-color: rgba(0, 0, 0, 0.2);
+#upper #animRectShadow.active {
+  opacity: 1;
 }
 
 #upper nav ul {
@@ -134,6 +137,7 @@ a:visited {
   font-family: 'Roboto', sans-serif;
   font-weight: 600;
   cursor: pointer;
+  z-index: 8;
 }
 
 #upper nav #navLeft span::after {
@@ -161,6 +165,7 @@ a:visited {
   align-items: center;
   height: 67px;
   margin-left: auto;
+  z-index: 8;
 }
 
 #upper nav #navRight span {
@@ -199,6 +204,7 @@ a:visited {
 #upper #scroll {
   position: relative;
   height: 100%;
+  z-index: 1;
 }
 
 #upper #scroll #imgContainer {
@@ -211,51 +217,51 @@ a:visited {
   z-index: 9;
   isolation: isolate;
   /* keep the glow behind the content */
+}
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset: -6%;
-    background:
-      radial-gradient(135% 120% at 80% 20%, rgba(90, 20, 180, 0.75), rgba(0, 0, 0, 0) 70%),
-      radial-gradient(135% 120% at 80% 80%, rgba(40, 140, 210, 0.72), rgba(0, 0, 0, 0) 73%),
-      radial-gradient(135% 120% at 20% 20%, rgba(50, 150, 220, 0.68), rgba(0, 0, 0, 0) 70%),
-      radial-gradient(135% 120% at 20% 80%, rgba(100, 120, 180, 0.78), rgba(0, 0, 0, 0) 73%);
-    filter: blur(40px);
-    z-index: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-  }
+#upper #scroll #imgContainer::before {
+  content: "";
+  position: absolute;
+  inset: -6%;
+  background:
+    radial-gradient(135% 120% at 80% 20%, rgba(90, 20, 180, 0.75), rgba(0, 0, 0, 0) 70%),
+    radial-gradient(135% 120% at 80% 80%, rgba(40, 140, 210, 0.72), rgba(0, 0, 0, 0) 73%),
+    radial-gradient(135% 120% at 20% 20%, rgba(50, 150, 220, 0.68), rgba(0, 0, 0, 0) 70%),
+    radial-gradient(135% 120% at 20% 80%, rgba(100, 120, 180, 0.78), rgba(0, 0, 0, 0) 73%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
 
-  &.fade::before {
-    opacity: 0;
-  }
+#upper #scroll #imgContainer.fade::before {
+  opacity: 0;
+}
 
-  &::after {
-    content: "";
-    position: absolute;
-    inset: -1%;
-    background:
-      radial-gradient(135% 120% at 80% 20%, rgba(90, 20, 180, 0.85) 0 45%, rgba(0, 0, 0, 0) 72%),
-      radial-gradient(135% 120% at 80% 80%, rgba(40, 140, 210, 0.80) 0 48%, rgba(0, 0, 0, 0) 75%),
-      radial-gradient(135% 120% at 20% 20%, rgba(50, 150, 220, 0.78) 0 45%, rgba(0, 0, 0, 0) 72%),
-      radial-gradient(135% 120% at 20% 80%, rgba(100, 120, 180, 0.85) 0 48%, rgba(0, 0, 0, 0) 75%);
-    filter: blur(10px);
-    z-index: 0;
-    pointer-events: none;
-    transition: opacity 0.25s ease;
-  }
+#upper #scroll #imgContainer::after {
+  content: "";
+  position: absolute;
+  inset: -1%;
+  background:
+    radial-gradient(135% 120% at 80% 20%, rgba(90, 20, 180, 0.85) 0 45%, rgba(0, 0, 0, 0) 72%),
+    radial-gradient(135% 120% at 80% 80%, rgba(40, 140, 210, 0.80) 0 48%, rgba(0, 0, 0, 0) 75%),
+    radial-gradient(135% 120% at 20% 20%, rgba(50, 150, 220, 0.78) 0 45%, rgba(0, 0, 0, 0) 72%),
+    radial-gradient(135% 120% at 20% 80%, rgba(100, 120, 180, 0.85) 0 48%, rgba(0, 0, 0, 0) 75%);
+  filter: blur(10px);
+  z-index: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
 
-  &.fade::after {
-    opacity: 0;
-  }
+#upper #scroll #imgContainer.fade::after {
+  opacity: 0;
+}
 
-  &.fixed {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+#upper #scroll #imgContainer.fixed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #upper #scroll .slide {
@@ -314,27 +320,26 @@ a:visited {
   background-color: #0046c8;
   padding: 14px 18px;
   border-radius: 24px;
+}
 
-  &:hover {
-    background-color: #3d7dd9;
-  }
+#upper #scroll #imgContainer .centerImgText a:hover {
+  background-color: #3d7dd9;
 }
 
 #upper #dots {
   position: absolute;
-  top: 65%;
+  top: 50vh;
   left: 6%;
-  transform: translateY(-50%);
-  z-index: 20;
+  z-index: 5;
   display: flex;
   flex-direction: column;
   gap: 0;
+}
 
-  &.fixed {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+#upper #dots.fixed {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 #upper #dots svg circle.dot,
@@ -346,31 +351,34 @@ a:visited {
   transition:
     stroke 0.3s ease,
     fill 0.3s ease;
+}
 
-  &:hover {
-    stroke: #fff;
-    fill: #fff;
-  }
+#upper #dots svg circle.dot:hover,
+#upper #dots svg polygon.dot:hover {
+  stroke: #fff;
+  fill: #fff;
+}
 
-  &.active {
-    stroke: #fff;
-    fill: #fff;
-  }
+#upper #dots svg circle.dot.active,
+#upper #dots svg polygon.dot.active {
+  stroke: #fff;
+  fill: #fff;
 }
 
 #upper #bt {
   position: absolute;
-  top: 91%;
+  top: 90vh;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
   height: 200px;
   z-index: 1;
+  pointer-events: none;
+}
 
-  &.fixed {
-    position: fixed;
-    top: 80%;
-  }
+#upper #bt.fixed {
+  position: fixed;
+  top: 80%;
 }
 
 #upper #bt h3 {
@@ -405,10 +413,10 @@ a:visited {
   font-weight: 600;
   color: #000;
   padding: 5px 2px;
+}
 
-  &:hover {
-    color: #3d7dd9;
-  }
+#lower a:hover {
+  color: #3d7dd9;
 }
 
 #lower1 {
@@ -515,12 +523,12 @@ a:visited {
   color: rgba(45, 118, 255, 1.0);
   fill: rgba(45, 118, 255, 1.0);
   stroke: rgba(45, 118, 255, 1.0);
+}
 
-  &:hover {
-    background-color: rgba(45, 118, 255, 1.0);
-    color: #fff;
-    fill: #fff;
-  }
+#lower3 div a:hover {
+  background-color: rgba(45, 118, 255, 1.0);
+  color: #fff;
+  fill: #fff;
 }
 
 #lower3 div a span {
@@ -584,11 +592,11 @@ footer {
   font-weight: 600;
   color: rgba(0, 0, 0, 0.4);
   border-bottom: 1px solid rgba(0, 0, 0, 0.0);
+}
 
-  &:hover {
-    color: rgba(0, 0, 0, 0.4);
-    border-bottom: rgba(0, 0, 0, 0.4) solid 1px;
-  }
+#lower4 ul li a:hover {
+  color: rgba(0, 0, 0, 0.4);
+  border-bottom: rgba(0, 0, 0, 0.4) solid 1px;
 }
 
 #lower5 {

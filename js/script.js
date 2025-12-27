@@ -23,6 +23,9 @@ const dots = [dot1, dot2, dot3];
 const arrow = document.getElementById('arrow');
 
 window.addEventListener('scroll', () => {
+    rect.style.top = '-1000px';
+    rectShadow.classList.remove('active');
+    productsLabel.classList.remove('active');
     const scroll = window.scrollY;
 
     // Snap to center after snapPoint
@@ -179,17 +182,18 @@ const developers = document.getElementById('developers');
 const partners = document.getElementById('partners');
 const foundry = document.getElementById('foundry');
 const rect = document.getElementById('animRect');
+const rectShadow = document.getElementById('animRectShadow');
 const productsLabel = products.querySelector('span');
 
 window.addEventListener('click', () => {
-    rect.classList.remove('active');
-    rect.style.top = '-900px';
+    rect.style.top = '-1000px';
+    rectShadow.classList.remove('active');
     productsLabel.classList.remove('active');
 });
 
 products.addEventListener('click', (e) => {
     e.stopPropagation(); // Prevent the window click from immediately removing the class
-    rect.classList.add('active');
     rect.style.top = '-400px';
+    rectShadow.classList.add('active');
     productsLabel.classList.add('active');
 });
