@@ -4,9 +4,8 @@ const slide2 = document.getElementById('slide2');
 const slide3 = document.getElementById('slide3');
 const slides = [slide1, slide2, slide3];
 const image = document.getElementById('centerImage');
-const startPoint = 50; // scrollY when it snaps to center
 const endPoint = 3950 - window.innerHeight; // scrollY when it snaps out of center
-const switchPoints = [200, 1200, 2200, endPoint + window.innerHeight]; // scrollY thresholds to change image
+const switchPoints = [1100, 2200, endPoint + window.innerHeight]; // scrollY thresholds to change image
 let currentSlide = 1;
 
 const btContainer = document.getElementById('bt');
@@ -23,30 +22,17 @@ const dots = [dot1, dot2, dot3];
 const arrow = document.getElementById('arrow');
 
 window.addEventListener('scroll', () => {
-    rect.style.top = '-1000px';
-    rectShadow.classList.remove('active');
-    productsLabel.classList.remove('active');
+    removeRect();
     const scroll = window.scrollY;
 
     // Snap to center after snapPoint
-    if (scroll >= startPoint && scroll <= endPoint) {
-        container.classList.add('fixed');
+    if (scroll <= endPoint) {
         container.style.top = '';
-        btContainer.classList.add('fixed');
         btContainer.style.top = '';
         dotsContainer.classList.add('fixed');
         dotsContainer.style.top = '';
-    } else if (scroll < startPoint) {
-        container.classList.remove('fixed');
-        container.style.top = '';
-        btContainer.classList.remove('fixed');
-        btContainer.style.top = '';
-        dotsContainer.classList.remove('fixed');
-        dotsContainer.style.top = '';
     } else if (scroll > endPoint) {
-        container.classList.remove('fixed');
         container.style.top = `${endPoint}px`;
-        btContainer.classList.remove('fixed');
         btContainer.style.top = `${endPoint + 685}px`;
         dotsContainer.classList.remove('fixed');
         dotsContainer.style.top = `${endPoint + 340}px`;
@@ -55,9 +41,9 @@ window.addEventListener('scroll', () => {
     let newSlide = currentSlide; // Track the new slide index
 
     // Switch between images based on scroll
-    if (scroll < switchPoints[1]) {
+    if (scroll < switchPoints[0]) {
         newSlide = 1;
-    } else if (scroll < switchPoints[2]) {
+    } else if (scroll < switchPoints[1]) {
         newSlide = 2;
     } else {
         newSlide = 3;
@@ -90,7 +76,7 @@ window.addEventListener('scroll', () => {
                 if (currentSlide !== 1) return; // Prevent animation if slide changed again
                 bt1.style.top = '0';
                 bt1.style.opacity = '1';
-            }, 1000);
+            }, 500);
 
         } else if (newSlide === 2) {
             slide2.style.pointerEvents = 'auto';
@@ -112,7 +98,7 @@ window.addEventListener('scroll', () => {
                 if (currentSlide !== 2) return; // Prevent animation if slide changed again
                 bt2.style.top = '0';
                 bt2.style.opacity = '1';
-            }, 1000);
+            }, 500);
 
         } else if (newSlide === 3) {
             slide3.style.pointerEvents = 'auto';
@@ -132,7 +118,7 @@ window.addEventListener('scroll', () => {
                 if (currentSlide !== 3) return; // Prevent animation if slide changed again
                 bt3.style.top = '0';
                 bt3.style.opacity = '1';
-            }, 1000);
+            }, 500);
         }
 
         fadeGlow();
@@ -185,10 +171,14 @@ const rect = document.getElementById('animRect');
 const rectShadow = document.getElementById('animRectShadow');
 const productsLabel = products.querySelector('span');
 
-window.addEventListener('click', () => {
+function removeRect() {
     rect.style.top = '-1000px';
     rectShadow.classList.remove('active');
     productsLabel.classList.remove('active');
+}
+
+window.addEventListener('click', () => {
+    removeRect();
 });
 
 products.addEventListener('click', (e) => {

@@ -47,14 +47,17 @@ a:visited {
   height: 3950px;
   position: relative;
   isolation: isolate;
+  z-index: 5;
 }
 
 #upper nav {
   display: flex;
   align-items: center;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   justify-content: flex-start;
-  padding: 28px 2% 28px 3%;
+  padding: 1% 2.5% 1% 2.5%;
   width: 95%;
   height: 44px;
   color: #fff;
@@ -208,10 +211,10 @@ a:visited {
 }
 
 #upper #scroll #imgContainer {
-  position: absolute;
-  top: 178px;
+  position: fixed;
+  top: 55%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: 600px;
   height: 600px;
   z-index: 9;
@@ -227,8 +230,8 @@ a:visited {
     radial-gradient(135% 120% at 80% 20%, rgba(90, 20, 180, 0.75), rgba(0, 0, 0, 0) 70%),
     radial-gradient(135% 120% at 80% 80%, rgba(40, 140, 210, 0.72), rgba(0, 0, 0, 0) 73%),
     radial-gradient(135% 120% at 20% 20%, rgba(50, 150, 220, 0.68), rgba(0, 0, 0, 0) 70%),
-    radial-gradient(135% 120% at 20% 80%, rgba(100, 120, 180, 0.78), rgba(0, 0, 0, 0) 73%);
-  filter: blur(40px);
+    radial-gradient(135% 120% at 20% 80%, rgba(100, 160, 180, 0.78), rgba(0, 0, 0, 0) 73%);
+  filter: blur(50px);
   z-index: 0;
   pointer-events: none;
   transition: opacity 0.25s ease;
@@ -246,7 +249,7 @@ a:visited {
     radial-gradient(135% 120% at 80% 20%, rgba(90, 20, 180, 0.85) 0 45%, rgba(0, 0, 0, 0) 72%),
     radial-gradient(135% 120% at 80% 80%, rgba(40, 140, 210, 0.80) 0 48%, rgba(0, 0, 0, 0) 75%),
     radial-gradient(135% 120% at 20% 20%, rgba(50, 150, 220, 0.78) 0 45%, rgba(0, 0, 0, 0) 72%),
-    radial-gradient(135% 120% at 20% 80%, rgba(100, 120, 180, 0.85) 0 48%, rgba(0, 0, 0, 0) 75%);
+    radial-gradient(135% 120% at 20% 80%, rgba(100, 160, 180, 0.85) 0 48%, rgba(0, 0, 0, 0) 75%);
   filter: blur(10px);
   z-index: 0;
   pointer-events: none;
@@ -255,13 +258,6 @@ a:visited {
 
 #upper #scroll #imgContainer.fade::after {
   opacity: 0;
-}
-
-#upper #scroll #imgContainer.fixed {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 #upper #scroll .slide {
@@ -274,8 +270,8 @@ a:visited {
   z-index: 100;
   pointer-events: none;
   transition:
-    top 1s ease,
-    opacity 0.8s ease;
+    top 0.5s ease,
+    opacity 0.5s ease;
 }
 
 #upper #scroll #slide1 {
@@ -327,19 +323,14 @@ a:visited {
 }
 
 #upper #dots {
-  position: absolute;
-  top: 50vh;
+  position: fixed;
+  top: 60%;
   left: 6%;
+  transform: translateY(-50%);
   z-index: 5;
   display: flex;
   flex-direction: column;
   gap: 0;
-}
-
-#upper #dots.fixed {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 #upper #dots svg circle.dot,
@@ -366,19 +357,18 @@ a:visited {
 }
 
 #upper #bt {
-  position: absolute;
-  top: 90vh;
+  position: fixed;
+  top: 80%;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
   height: 200px;
-  z-index: 1;
+  z-index: -1;
   pointer-events: none;
 }
 
 #upper #bt.fixed {
-  position: fixed;
-  top: 80%;
+  
 }
 
 #upper #bt h3 {
@@ -386,7 +376,7 @@ a:visited {
   top: -50%;
   display: inline-block;
   color: rgba(0, 110, 200, 0.25);
-  font-size: 230px;
+  font-size: 240px;
   letter-spacing: -10px;
   width: 100%;
   text-align: center;
@@ -394,8 +384,8 @@ a:visited {
   opacity: 0;
   user-select: none;
   transition:
-    top 1s ease,
-    opacity 1s ease;
+    top 0.8s ease,
+    opacity 0.5s ease;
 }
 
 #upper #bt #bt1 {
