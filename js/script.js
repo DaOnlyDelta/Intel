@@ -167,14 +167,29 @@ const solutions = document.getElementById('solutions');
 const developers = document.getElementById('developers');
 const partners = document.getElementById('partners');
 const foundry = document.getElementById('foundry');
+
 const rect = document.getElementById('animRect');
 const rectShadow = document.getElementById('animRectShadow');
+
 const productsLabel = products.querySelector('span');
+const supportLabel = support.querySelector('span');
+const solutionsLabel = solutions.querySelector('span');
+const developersLabel = developers.querySelector('span');
+const partnersLabel = partners.querySelector('span');
+const foundryLabel = foundry.querySelector('span');
+
+const productDD = document.getElementById('productDD');
+const supportDD = document.getElementById('supportDD');
+const solutionsDD = document.getElementById('solutionsDD');
+const developersDD = document.getElementById('developersDD');
+const partnersDD = document.getElementById('partnersDD');
+const foundryDD = document.getElementById('foundryDD');
 
 function removeRect() {
     rect.style.top = '-1000px';
     rectShadow.classList.remove('active');
     productsLabel.classList.remove('active');
+    productDD.style.left = '-100%';
 }
 
 window.addEventListener('click', () => {
@@ -186,4 +201,6 @@ products.addEventListener('click', (e) => {
     rect.style.top = '-400px';
     rectShadow.classList.add('active');
     productsLabel.classList.add('active');
+    // Position dropdown
+    productDD.style.left = '5vw';
 });

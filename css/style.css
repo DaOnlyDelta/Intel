@@ -91,7 +91,19 @@ a:visited {
   width: 100%;
   height: 1000px;
   z-index: 6;
+  overflow: hidden;
+  pointer-events: none;
   transition: top 0.3s ease;
+}
+
+#upper #animRect .dd {
+  position: absolute;
+  top: 550px;
+  position: fixed;
+  left: -100vw;
+  z-index: 1001;
+  height: 100px;
+  width: 100px;
 }
 
 #upper #animRectShadow {
@@ -148,7 +160,7 @@ a:visited {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -3px;
+  bottom: 22px;
   /* move the line further down */
   height: 1px;
   /* thickness of the line */
@@ -293,7 +305,7 @@ a:visited {
   text-align: center;
   color: #fff;
   font-family: 'Roboto', sans-serif;
-  width: 80%;
+  width: 73%;
 }
 
 #upper #scroll #imgContainer .centerImgText h1 {
@@ -367,10 +379,6 @@ a:visited {
   pointer-events: none;
 }
 
-#upper #bt.fixed {
-  
-}
-
 #upper #bt h3 {
   position: absolute;
   top: -50%;
@@ -409,7 +417,7 @@ a:visited {
   color: #3d7dd9;
 }
 
-#lower1 {
+#lower #lower1 {
   padding: 120px 0;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -417,13 +425,13 @@ a:visited {
   border-bottom: rgba(50, 118, 220, 0.3) 1px solid;
 }
 
-#lower1 div {
+#lower #lower1 div {
   position: relative;
   height: 400px;
   border-right: rgba(50, 118, 220, 0.3) 1px solid;
 }
 
-#lower1 div a {
+#lower #lower1 div a {
   display: inline-block;
   height: 100%;
   width: 18vw;
@@ -433,19 +441,19 @@ a:visited {
   font-family: 'Roboto', sans-serif;
 }
 
-#lower1 div a h1 {
+#lower #lower1 div a h1 {
   font-size: 30px;
   line-height: 32px;
   margin-bottom: 25px;
 }
 
-#lower1 div a h2 {
+#lower #lower1 div a h2 {
   color: #bebebe;
   font-size: 14px;
   margin-bottom: 12px;
 }
 
-#lower1 div a h3 {
+#lower #lower1 div a h3 {
   color: #afafaf;
   font-size: 15px;
   margin-bottom: 12px;
@@ -453,36 +461,36 @@ a:visited {
   line-height: 18px;
 }
 
-#lower1 div a h4 {
+#lower #lower1 div a h4 {
   position: absolute;
   bottom: 0;
   color: #84b5ff;
   font-size: 14px;
 }
 
-#lower1 #gaming {
+#lower #lower1 #gaming {
   border-right: none;
 }
 
-#lower2 {
+#lower #lower2 {
   padding: 120px 0;
 }
 
-#lower2 h1 {
+#lower #lower2 h1 {
   display: block;
   margin: 0 auto;
-  width: 80%;
+  width: 75%;
   font-size: 56px;
   font-weight: 700;
   letter-spacing: -2px;
   text-align: center;
 }
 
-#lower2 h1 sup {
+#lower #lower2 h1 sup {
   font-size: 30px;
 }
 
-#lower2 h1::after {
+#lower #lower2 h1::after {
   background-color: #00c7fd;
   content: "";
   display: inline-block;
@@ -492,17 +500,17 @@ a:visited {
   border-color: #000 solid 1px;
 }
 
-#lower3 {
+#lower #lower3 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0px;
 }
 
-#lower3 div {
+#lower #lower3 div {
   position: relative;
 }
 
-#lower3 div a {
+#lower #lower3 div a {
   display: inline-block;
   height: 21vw;
   width: 18vw;
@@ -515,13 +523,13 @@ a:visited {
   stroke: rgba(45, 118, 255, 1.0);
 }
 
-#lower3 div a:hover {
+#lower #lower3 div a:hover {
   background-color: rgba(45, 118, 255, 1.0);
   color: #fff;
   fill: #fff;
 }
 
-#lower3 div a span {
+#lower #lower3 div a span {
   display: inline-block;
   position: absolute;
   top: 30px;
@@ -530,24 +538,24 @@ a:visited {
   width: auto;
 }
 
-#lower3 div a span svg {
+#lower #lower3 div a span svg {
   height: 100%;
   width: auto;
   stroke: inherit;
   fill: inherit;
 }
 
-#lower3 div a span svg .statusGreen {
+#lower #lower3 div a span svg .statusGreen {
   fill: #22C55E;
   stroke: #22C55E;
 }
 
-#lower3 div a:hover span svg .statusGreen {
+#lower #lower3 div a:hover span svg .statusGreen {
   fill: #22C55E;
   stroke: #22C55E;
 }
 
-#lower3 div a h5 {
+#lower #lower3 div a h5 {
   position: absolute;
   bottom: 30px;
   left: 30px;
@@ -561,21 +569,21 @@ footer {
   font-family: 'Roboto', sans-serif;
 }
 
-#lower4 {
+footer #lower4 {
   border-bottom: rgba(0, 0, 0, 0.2) solid 1px;
 }
 
-#lower4 ul {
+footer #lower4 ul {
   list-style: none;
 }
 
-#lower4 ul li {
+footer #lower4 ul li {
   display: inline-block;
   margin-right: 30px;
   height: 40px;
 }
 
-#lower4 ul li a {
+footer #lower4 ul li a {
   display: inline-block;
   height: 12px;
   font-size: 14px;
@@ -584,16 +592,16 @@ footer {
   border-bottom: 1px solid rgba(0, 0, 0, 0.0);
 }
 
-#lower4 ul li a:hover {
+footer #lower4 ul li a:hover {
   color: rgba(0, 0, 0, 0.4);
   border-bottom: rgba(0, 0, 0, 0.4) solid 1px;
 }
 
-#lower5 {
+footer #lower5 {
   padding-left: 5px;
 }
 
-#lower5 a {
+footer #lower5 a {
   display: inline-block;
   height: 20px;
   width: auto;
@@ -601,12 +609,12 @@ footer {
   cursor: pointer;
 }
 
-#lower5 a svg {
+footer #lower5 a svg {
   height: 100%;
   width: auto;
 }
 
-#logoCanvas {
+footer #logoCanvas {
   display: block;
   padding: 6px 0;
   cursor: pointer;
