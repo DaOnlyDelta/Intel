@@ -4,8 +4,11 @@ const slide2 = document.getElementById('slide2');
 const slide3 = document.getElementById('slide3');
 const slides = [slide1, slide2, slide3];
 const image = document.getElementById('centerImage');
-const endPoint = 3950 - window.innerHeight; // scrollY when it snaps out of center
-const switchPoints = [1100, 2200, endPoint + window.innerHeight]; // scrollY thresholds to change image
+const endPoint = 3350 - window.innerHeight; // scrollY when it snaps out of center
+
+const navBarHeight = document.querySelector('nav').getBoundingClientRect().height;
+const switchPoints = [700, 1400, endPoint + window.innerHeight - navBarHeight]; // scrollY thresholds to change image (account for fixed nav height)
+const dotScrollPoints = [0, switchPoints[0] + 1, switchPoints[1] + 1];
 let currentSlide = 1;
 
 const btContainer = document.getElementById('bt');
@@ -21,21 +24,25 @@ const dot3 = document.getElementById('dot3');
 const dots = [dot1, dot2, dot3];
 const arrow = document.getElementById('arrow');
 
+// Trigger the scroll handler once when the page finishes loading (init state)
+window.addEventListener('load', () => {
+    window.dispatchEvent(new Event('scroll'));
+    removeRect();
+});
+
 window.addEventListener('scroll', () => {
     removeRect();
     const scroll = window.scrollY;
 
     // Snap to center after snapPoint
     if (scroll <= endPoint) {
-        container.style.top = '';
-        btContainer.style.top = '';
-        dotsContainer.classList.add('fixed');
-        dotsContainer.style.top = '';
+        container.classList.remove('snapped');
+        btContainer.classList.remove('snapped');
+        dotsContainer.classList.remove('snapped');
     } else if (scroll > endPoint) {
-        container.style.top = `${endPoint}px`;
-        btContainer.style.top = `${endPoint + 685}px`;
-        dotsContainer.classList.remove('fixed');
-        dotsContainer.style.top = `${endPoint + 340}px`;
+        container.classList.add('snapped');
+        btContainer.classList.add('snapped');
+        dotsContainer.classList.add('snapped');
     }
 
     let newSlide = currentSlide; // Track the new slide index
@@ -140,7 +147,7 @@ window.addEventListener('scroll', () => {
 dots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
         window.scrollTo({
-            top: switchPoints[index],
+            top: dotScrollPoints[index],
             behavior: 'smooth'
         });
     });
@@ -148,7 +155,7 @@ dots.forEach((dot, index) => {
 
 arrow.addEventListener('click', () => {
     window.scrollTo({
-        top: switchPoints[currentSlide],
+        top: switchPoints[switchPoints.length - 1],
         behavior: 'smooth'
     });
 });
@@ -185,22 +192,27 @@ const developersDD = document.getElementById('developersDD');
 const partnersDD = document.getElementById('partnersDD');
 const foundryDD = document.getElementById('foundryDD');
 
+document.getElementById('mainContainer').addEventListener('click', () => {
+    removeRect();
+});
+
 function removeRect() {
-    rect.style.top = '-1000px';
-    rectShadow.classList.remove('active');
+    rect.style.height = '0';
+    rect.style.borderColor = '#000f28';
+    rectShadow.style.opacity = '0';
     productsLabel.classList.remove('active');
     productDD.style.left = '-100%';
 }
 
-window.addEventListener('click', () => {
-    removeRect();
-});
-
 products.addEventListener('click', (e) => {
-    e.stopPropagation(); // Prevent the window click from immediately removing the class
-    rect.style.top = '-400px';
-    rectShadow.classList.add('active');
-    productsLabel.classList.add('active');
-    // Position dropdown
-    productDD.style.left = '5vw';
+    e.stopPropagation();
+    rect.style.height = '620px';
+    rect.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+    rectShadow.style.opacity = '1';
+    setTimeout(() => {
+        if (rect.style.height !== '620px') return; // Prevent if rect was removed
+        productsLabel.classList.add('active');
+    }, 500);
+
+    productDD.style.left = '167px';
 });
