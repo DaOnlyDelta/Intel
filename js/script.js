@@ -216,3 +216,15 @@ products.addEventListener('click', (e) => {
 
     productDD.style.left = '167px';
 });
+
+
+// About dropdown
+const about = document.getElementById('about');
+const signIn = document.getElementById('signIn');
+signIn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    about.style.top = '10%';
+    setTimeout(() => {
+        about.style.top = '-10%';
+    }, 2000);
+});

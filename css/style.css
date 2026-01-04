@@ -606,10 +606,6 @@ nav #navRight #searchText {
   stroke: rgba(45, 118, 255, 1.0);
 }
 
-#lower #lower3:last-child {
-  
-}
-
 #lower #lower3 a:hover {
   background-color: rgba(45, 118, 255, 1.0);
   color: #fff;
@@ -708,4 +704,38 @@ footer #logoCanvas {
   bottom: 0;
   width: 70px;
   height: auto;
+}
+
+
+
+#about{
+  position: fixed;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(0, 110, 200, 0.5);
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  text-align: center;
+  width: 220px;
+  transition: top 0.3s ease;
+}
+
+#aboutTitle {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+#aboutName{
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
 }
