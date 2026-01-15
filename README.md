@@ -89,5 +89,7 @@ Enej Leskovar
 ```text
 git clone https://github.com/DaOnlyDelta/Intel.git
 ```
+```text
 Option A (quick): open index.html in your browser
 Option B (recommended): use VS Code “Live Server”
+```
