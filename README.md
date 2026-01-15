@@ -41,6 +41,27 @@ Canvas API (logo rendering)
 Fonts: Roboto (local)
 ```
 
+## Screenshots
+
+Opening view
+
+
+Project dropdown
+
+
+Fixed scrolling
+
+
+From fixed to absolute
+
+
+Lower section 1
+<img width="1919" height="950" alt="image" src="https://github.com/user-attachments/assets/a370bd18-99c7-481c-9ba8-48a813e2f1f6" />
+
+Lower section 2
+
+
+
 ## Project structure
 
 ```text
@@ -57,12 +78,14 @@ Fonts: Roboto (local)
 └─ fonts/
 ```
 
-## Run locally
+## Author
+
+Enej Leskovar
+
+## Installation
 
 ```text
 git clone https://github.com/DaOnlyDelta/Intel.git
-cd Intel
-
+```
 Option A (quick): open index.html in your browser
 Option B (recommended): use VS Code “Live Server”
-```
