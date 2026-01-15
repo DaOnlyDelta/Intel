@@ -1,4 +1,4 @@
-<img width="1919" height="953" alt="image" src="https://github.com/user-attachments/assets/f73fab93-f171-491d-b55a-e2446c7dc537" /># Intel
+# Intel
 
 ```text
 Intel-inspired front-end practice site
@@ -43,25 +43,25 @@ Fonts: Roboto (local)
 
 ## Screenshots
 
-# Opening view
+### Opening view
 <img width="1919" height="951" alt="image" src="https://github.com/user-attachments/assets/6a253e8a-649c-47e1-9192-bf2038f2fbcb" />
 
-# Project dropdown
+### Project dropdown
 <img width="1919" height="951" alt="image" src="https://github.com/user-attachments/assets/9563221b-36b6-4d88-88a1-2da4c8c9c1bb" />
 
-# Fixed scrolling
+### Fixed scrolling
 <img width="1919" height="950" alt="image" src="https://github.com/user-attachments/assets/07202d50-e9b3-4286-9ee2-b3237ba81bd0" />
 
-# From fixed to absolute
+### From fixed to absolute
 <img width="1919" height="950" alt="image" src="https://github.com/user-attachments/assets/4dd9b98d-9819-40c0-8a49-1a42fd535365" />
 
-# Lower section 1
+### Lower section 1
 <img width="1919" height="948" alt="image" src="https://github.com/user-attachments/assets/4dea7214-f04f-48ed-963b-d56ec617137f" />
 
-# Lower section 2
+### Lower section 2
 <img width="1919" height="951" alt="image" src="https://github.com/user-attachments/assets/1b580bac-e315-4ee0-88d2-d947fa02403b" />
 
-# Footer
+### Footer
 <img width="1919" height="953" alt="image" src="https://github.com/user-attachments/assets/01dbfb34-9bc9-4cde-a12e-f85ad87f1c78" />
 
 ## Project structure
