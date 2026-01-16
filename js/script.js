@@ -225,6 +225,6 @@ signIn.addEventListener('click', (e) => {
     e.stopPropagation();
     about.style.top = '10%';
     setTimeout(() => {
-        about.style.top = '-10%';
+        about.style.top = '';
     }, 2000);
 });
